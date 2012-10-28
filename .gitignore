@@ -1,0 +1,5 @@
+# sprocket-rockbox-theme
+# .gitignore
+
+# Ignore Vim swp files
+*.swp

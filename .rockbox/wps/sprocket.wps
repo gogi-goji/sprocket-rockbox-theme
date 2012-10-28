@@ -1,0 +1,14 @@
+# Theme Name: sprocket
+# By: Cam Mendoza <mendoza.cam@gmail.com>
+# Platform: iPod Mini
+# Licensed CC-BY-SA 3.0
+# Version 1.0
+# Last updated: 26-07-2012
+#
+# WPS File
+#
+# Disable the status bar (theme uses cusom .sbs)
+%wd
+# Set the backdrop image
+%X(backdrop.bmp)
+

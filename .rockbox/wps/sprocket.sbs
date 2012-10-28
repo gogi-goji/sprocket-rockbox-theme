@@ -1,0 +1,67 @@
+# Theme Name: sprocket
+# By: Cam Mendoza <mendoza.cam@gmail.com>
+# Platform: iPod Mini
+# Licensed CC-BY-SA 3.0
+# Version 1.0
+# Last updated: 26-07-2012
+# ========
+# SBS File
+# ========
+# 
+# Disable the default status bar (we use our own)
+%wd
+#
+# Load the images and font we'll be using and give them labels
+%Fl(2, 14-Adobe-Helvetica-Bold.fnt)
+%xl(a,playmode-string.bmp,0,2,3)
+%xl(b,hold.bmp,18,1)
+%xl(c,volume-string.bmp,29,1,4)
+%xl(d,hdd-animation.bmp,45,0,4)
+%xl(e,batt-string.bmp,113,1,16)
+%xl(f,batt-charging,113,1,5)
+#
+# This is the base skin, so we cannot draw anything 
+# in the main viewport. Instead, we're going to make
+# some conditional viewports in which to put our icons
+# and battery % text.
+#
+# Playmode Status
+%V(x,y,width,height,font) %Vf(0) %Vb(3)
+#Syntax:<Stop|Play|Pause|Ffwd|Rew|Rec|Rec Pause|FM|FM Pause>
+%?mp<%xd(aa)|%xd(ab)|%xd(ac)|%xd(ad)|%xd(ae)|%xd(af)|%xd(ag)>
+# Note: I don't think the iPod mini is capable of recording
+# or FM radio, but I've included a general icon for rec or
+# any of the last three just in case.
+#
+# Hold Switch
+%V(x,y,width,height,font) %Vf(0) %Vb(3)
+%?mh<%xd(b)|%?mr<%xd(b)>>
+#
+# Volume Indicator
+%V(x,y,width,height,font) %Vf(0) %Vb(3)
+#Syntax:<Mute|...|0dB|Above 0dB>
+%?pv<%xd(ca)|%<xd(ca)|%xd(cb)|%xd(cc)|%xd(cd)|%xd(cd)>
+#
+# Disk Activity
+%V(x,y,width,height,font) %Vf(0) %Vb(3)
+%?lh<%t(1)%xd(da);%t(1)%xd(db);%t(1)%xd(dc);%t(1)%xd(dd)>
+#
+# Battery Percentage
+%V(x,y,width,height,font) %Vf(0) %Vb(3)
+%ar%bl
+#
+# Battery Bar
+# Check if battery is connected to power and charing
+%?bp<%?bc<%Vd(charging)|%Vd(charged)>|%Vd(discharging)>
+# The Viewports
+%Vl(charging,x,y,width,height,font) %Vf(0) %Vb(3)
+%t(1)%xd(fa);%t(1)%xd(fb);%t(1)%xd(fc);%t(1)%xf(fd);%t(1)%xd(fe)
+%Vl(charged,x,y,width,height,font) %Vf(0) %Vb(3)
+%xd(fe)
+%Vl(discharging,x,y,width,height,font) %Vf(0) %Vb(3)
+# Syntax: %?bl<-1|1|2|...|N>
+%?bl<%xd(ea)|%xd(eb)|%xd(ec)|%xd(ed)|%xd(ee)|%xd(ef)|%xd(eg)|%xd(eh)|%xd(ei)|%xd(ej)|%xd(ek)|%xd(el)|%xd(em)|%xd(en)|%xd(eo)|%xd(ep)|%xd(eq)|%xd(eq)> #Used (eq) twice so 99% and 100% have the same icon displayed
+#
+# The info viewport (Where all the menus and whatnot
+# will be diplayed)
+%Vi(-,0,16,138,94,2) %Vf(0) %Vb(3)
