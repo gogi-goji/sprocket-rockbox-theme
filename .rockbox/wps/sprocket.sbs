@@ -1,24 +1,26 @@
-# Theme Name: sprocket
-# By: Cam Mendoza <mendoza.cam@gmail.com>
-# Platform: iPod Mini
-# Licensed CC-BY-SA 3.0
-# Version 1.0
-# Last updated: 26-07-2012
-# ========
-# SBS File
-# ========
-# 
-# Disable the default status bar (we use our own)
+# Theme Name: Sprocket
+# By: Cam Mendoza <mendoza.cam@gmail.com> 
+# Platform: iPod Mini (138x110, 4 colour grayscale)
+# License: CC-BY-SA 3.0
+# Version: 1.0
+# Last updated: 2012-12-05
+# For a README and more information, please see the project page on GitHub:
+# <https://github.com/gogi-goji/sprocket-rockbox-theme> 
+#
+# SBS file (Base skin for a custom statusbar)
+# .rockbox/wps/sprocket.sbs
+#
+# Disable the default status bar (since we use our own)
 %wd
 #
 # Load the images and font we'll be using and give them labels
-%Fl(2, 14-Adobe-Helvetica-Bold.fnt)
-%xl(a,playmode-string.bmp,0,2,3)
-%xl(b,hold.bmp,18,1)
-%xl(c,volume-string.bmp,29,1,4)
-%xl(d,hdd-animation.bmp,45,0,4)
-%xl(e,batt-string.bmp,113,1,16)
-%xl(f,batt-charging,113,1,5)
+%Fl(2,14-Adobe-Helvetica-Bold.fnt)
+%xl(a,sprocket-vol-bar-strip.bmp,0,0)
+%xl(b,sprocket-hold.bmp,0,0)
+%xl(c,sprocket-play-status.bmp,0,0)
+%xl(d,sprocket-hdd-activity-wave-big.bmp,0,0)
+%xl(e,sprocket-batt-strip.bmp,0,0)
+%xl(f,sprocket-batt-charge-strip,0,0)
 #
 # This is the base skin, so we cannot draw anything 
 # in the main viewport. Instead, we're going to make
@@ -29,9 +31,9 @@
 %V(x,y,width,height,font) %Vf(0) %Vb(3)
 #Syntax:<Stop|Play|Pause|Ffwd|Rew|Rec|Rec Pause|FM|FM Pause>
 %?mp<%xd(aa)|%xd(ab)|%xd(ac)|%xd(ad)|%xd(ae)|%xd(af)|%xd(ag)>
-# Note: I don't think the iPod mini is capable of recording
-# or FM radio, but I've included a general icon for rec or
-# any of the last three just in case.
+# Note: I don't think the iPod mini is capable of recording or FM radio, but
+# I've included a general icon for rec or and another for any of the last
+# three, just in case I'm totally clueless.
 #
 # Hold Switch
 %V(x,y,width,height,font) %Vf(0) %Vb(3)
@@ -51,7 +53,8 @@
 %ar%bl
 #
 # Battery Bar
-# Check if battery is connected to power and charing
+# Check if battery is connected to power and charing, and display the correct
+# viewport accordingly
 %?bp<%?bc<%Vd(charging)|%Vd(charged)>|%Vd(discharging)>
 # The Viewports
 %Vl(charging,x,y,width,height,font) %Vf(0) %Vb(3)
@@ -60,8 +63,9 @@
 %xd(fe)
 %Vl(discharging,x,y,width,height,font) %Vf(0) %Vb(3)
 # Syntax: %?bl<-1|1|2|...|N>
-%?bl<%xd(ea)|%xd(eb)|%xd(ec)|%xd(ed)|%xd(ee)|%xd(ef)|%xd(eg)|%xd(eh)|%xd(ei)|%xd(ej)|%xd(ek)|%xd(el)|%xd(em)|%xd(en)|%xd(eo)|%xd(ep)|%xd(eq)|%xd(eq)> #Used (eq) twice so 99% and 100% have the same icon displayed
+%?bl<%xd(ea)|%xd(eb)|%xd(ec)|%xd(ed)|%xd(ee)|%xd(ef)|%xd(eg)|%xd(eh)|%xd(ei)|%xd(ej)|%xd(ek)|%xd(el)|%xd(em)|%xd(en)|%xd(eo)|%xd(ep)|%xd(eq)|%xd(eq)> 
+# Note: Used (eq) twice so 99% and 100% of battery capacity have the same icon 
+# displayed
 #
-# The info viewport (Where all the menus and whatnot
-# will be diplayed)
+# The info viewport (Where all the menus and whatnot will be displayed)
 %Vi(-,0,16,138,94,2) %Vf(0) %Vb(3)

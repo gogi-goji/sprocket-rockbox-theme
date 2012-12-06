@@ -1,12 +1,14 @@
-# Theme Name: sprocket
-# By: Cam Mendoza <mendoza.cam@gmail.com>
-# Platform: iPod Mini
-# Licensed CC-BY-SA 3.0
-# Version 1.0
-# Last updated: 26-07-2012
+# Theme Name: Sprocket
+# By: Cam Mendoza <mendoza.cam@gmail.com> 
+# Platform: iPod Mini (138x110, 4 colour grayscale)
+# License: CC-BY-SA 3.0
+# Version: 1.0
+# Last updated: 2012-12-05
+# For a README and more information, please see the project page on GitHub:
+# <https://github.com/gogi-goji/sprocket-rockbox-theme> 
 #
-# WPS File
-#
+# WPS file (the While Playing Screen)
+#(.rockbox/wps/sprocket.wps)
 # Disable the status bar (theme uses cusom .sbs)
 %wd
 # Set the backdrop image
