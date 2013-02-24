@@ -9,8 +9,13 @@
 #
 # WPS file (the While Playing Screen)
 #(.rockbox/wps/sprocket.wps)
-# Disable the status bar (theme uses cusom .sbs)
+#
+# Disable the status bar (theme uses custom .sbs)
 %wd
-# Set the backdrop image
-%X(backdrop.bmp)
-
+#
+# Load the images we'll be using in here
+%xl(g,repeat-strip.bmp,0,0)
+%xl(h,shuffle.bmp,0,0)
+%xl(i,crossfade-12.bmp,0,0)
+%xl(j,prog-bar-full.bmp,0,0)
+%xl(h,prog-bar-empty.bmp,0,0)
