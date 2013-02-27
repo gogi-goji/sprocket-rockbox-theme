@@ -1,4 +1,4 @@
-# Theme Name: Sprocket
+# Theme Name: sprocket
 # By: Cam Mendoza <mendoza.cam@gmail.com> 
 # Platform: iPod Mini (138x110, 4 colour grayscale)
 # License: CC-BY-SA 3.0
@@ -10,12 +10,80 @@
 # WPS file (the While Playing Screen)
 #(.rockbox/wps/sprocket.wps)
 #
-# Disable the status bar (theme uses custom .sbs)
-%wd
+# Enable the status bar (theme uses custom .sbs)
+%we
 #
-# Load the images we'll be using in here
-%xl(g,repeat-strip.bmp,0,0)
-%xl(h,shuffle.bmp,0,0)
-%xl(i,crossfade-12.bmp,0,0)
-%xl(j,prog-bar-full.bmp,0,0)
-%xl(h,prog-bar-empty.bmp,0,0)
+# Load the images and fonts we'll be using in here
+%Fl(2,12-Adobe-Helvetica-Bold.fnt)
+%Fl(3,14-Adobe-Helvetica-Bold.fnt)
+%xl(A,repeat-strip.bmp,6,2,4)
+%xl(B,shuffle.bmp,6,2)
+%xl(C,crossfade-12.bmp,0,0)
+%xl(D,prog-bar-full.bmp,0,0)
+%xl(E,prog-bar-empty.bmp,0,0)
+#
+# Playlist position
+%V(2,15,90,14,2)%Vf(0)%Vb(3)
+%al%s%pp %Sx(of) %pe%?pn< in %pn|>
+# Note that %Sx is used for automatic translations if this WPS is being used in
+# another language
+#
+# Repeat / Shuffle / Crossfade indicators
+#
+# In order to keep our icons right aligned here and in the order of crossfade,
+# shuffle, repeat, there's a couple of things going on.  We've already loaded
+# our icons (note that repeat and shuffle have been offset to accommodate the
+# cf icon being bigger).  Next, we make three viewports.  Then, in each
+# viewport we follow a yes/no logic tree to decide which icon to display.
+#
+# TODO: Add separate conditional viewports for the (larger) crossfade icon to 
+# avoid flickering due to viewport overlap?
+#
+# Repeat: %?mm<Off|All|One|Shuff|AB>
+# Shuffle: %?ps<On|Off>
+# Crossfade: %?xf<Off|On in any form>  
+#
+# Rightmost: repeat<off|*type*>
+#                   ^- shuffle<*on*|off>
+#                                   ^- crossfade<off|*on*>
+%V(119,16,17,9,-)%Vf(0)%Vb(3)
+%?mm<%?ps<%xd(B)|%?xf<|%xd(C)>>|%xd(Aa)|%xd(Ab)|%xd(Ac)|%xd(Ad)>
+#
+# Middle: repeat<off|on>
+#                ^   ^- shuffle<*on*|off>
+#                |                   ^- crossfade<off|*on*>
+#                shuffle<on|off>
+#                        ^- crossfade <off|*on*>
+%V(106,16,17,9,-)%Vf(0)%Vb(3)
+%?mm<%?ps<%?xf<|%xd(C)>|>|%?ps<%xd(B)|%?xf<|%xd(C)>>>
+#
+# Leftmost: repeat<off|on>
+#                      ^- shuffle<on|off>
+#                                 ^- crossfade<off|*on*>
+%V(93,16,17,9,-)%Vf(0)%Vb(3)
+%?mm<|%?ps<%?xf<|%xd(C)>|>>
+#
+# Track information 
+# (Track Name, Artist, Album Name, Next Track Info (name/artist))
+# TODO: If no metadata, alternate between displaying "Unknown XX" and file
+# or directory name as appropriate
+# TODO: Next: if end of playlist, show "- End -"
+%V(0,27,138,56,3)%Vf(0)%Vb(3)
+%ac%s%it 
+%ac%s%ia 
+%ac%s%id
+%ac%t(1.5)Next:;%ac%s%t(6)%It;%ac%t(1.5)by;%ac%s%t(6)%Ia
+#
+# Progress Bar
+# D = full, E = Empty
+%V(3,86,132,8,-)%Vf(0)%Vb(3)
+%pb(0,0,132,8,image,D,backdrop,E)
+#
+# Time progressed/left texts
+%V(3,96,45,14,3)%Vf(0)%Vb(3)
+%al%s%pc
+%V(90,96,45,14,3)%Vf(0)%Vb(3)
+%ar%s%pr
+# Sleep timer, if present
+%V(52,96,42,14,3)%Vf(0)%Vb(3)
+%?bs<%t(1.5)%acSleep:;%t(6)%ac%bs|>
