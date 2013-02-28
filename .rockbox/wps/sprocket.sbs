@@ -43,7 +43,7 @@
 #
 # Hold Switch
 %?mh<%Vd(hold)|%?mr<%Vd(hold)>>
-%Vl(hold,55,1,8,10,-)%Vf(0)%Vb(3)
+%Vl(hold,51,1,8,10,-)%Vf(0)%Vb(3)
 %xd(b)
 #
 # Playmode Status
@@ -56,11 +56,11 @@
 #
 # Disk Activity
 %?lh<%Vd(hdd)>
-%Vl(hdd,76,3,7,7,-)%Vf(0)%Vb(3)
+%Vl(hdd,78,3,7,7,-)%Vf(0)%Vb(3)
 %xd(d)
 #
 # Battery Percentage Text
-%V(83,0,30,10,2)%Vf(0)%Vb(3)
+%V(88,0,25,10,2)%Vf(0)%Vb(3)
 %ar%bl%%
 #
 # Battery Bar Check if battery is connected to power and charing, and display
