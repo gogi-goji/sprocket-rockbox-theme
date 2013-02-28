@@ -65,14 +65,17 @@
 #
 # Track information 
 # (Track Name, Artist, Album Name, Next Track Info (name/artist))
-# TODO: If no metadata, alternate between displaying "Unknown XX" and file
-# or directory name as appropriate
-# TODO: Next: if end of playlist, show "- End -"
+#
+# If metadata not found, display file name in place of track name, (Unknown 
+# Artist) alternating with parent of parent directory name, and (Unknown Album)
+# alternating with parent directory name.
+#
 %V(0,27,138,56,3)%Vf(0)%Vb(3)
-%ac%s%it 
-%ac%s%ia 
-%ac%s%id
-%ac%t(1.5)Next:;%ac%s%t(6)%It;%ac%t(1.5)by;%ac%s%t(6)%Ia
+%ac%s%?it<%it|%fn>
+%ac%s%?ia<%ia|%?d(2)<%t(6)%ac%s%(Unknown Artist%);%t(6)%ac%s%(%d(2)%)|%(Unknown Artist%)>> 
+%ac%s%?id<%id|%?d(1)<%t(6)%ac%s%(Unknown Album%);%t(6)%ac%s%(%d(1)%)|%(Unknown Album%)>> 
+#%ac%t(1.5)Next:;%ac%s%t(6)%It;%ac%t(1.5)by;%ac%s%t(6)%Ia
+%?Fn<%t(6)%ac%sNext: %?It<%It|%Fn>;%t(1.5)%ac%sNext: by;%t(6)%ac%sNext: %?Ia<%Ia|%(Unknown Artist%)>|%ac- End of Playlist ->
 #%ac%sNext: %It by %Ia #Purely scrolling next track info
 #
 # Progress Bar
@@ -84,7 +87,7 @@
 %V(3,96,45,14,3)%Vf(0)%Vb(3)
 %al%s%pc
 %V(90,96,45,14,3)%Vf(0)%Vb(3)
-%ar%s%pr
+%ar%s-%pr
 # Sleep timer, if present
-%V(52,96,42,14,3)%Vf(0)%Vb(3)
+%V(48,96,42,14,3)%Vf(0)%Vb(3)
 %?bs<%t(2)%acSleep:;%t(8)%ac%bs|>

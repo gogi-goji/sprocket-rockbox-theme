@@ -5,11 +5,11 @@ A Rockbox theme for the iPod Mini, inspired by Apple's original firmware
 design.  It attempts to balance displaying enough pertinent information with a
 clean aesthetic.  
 
-By: Cam Mendoza (gogi-goji) <mendoza.cam@gmail.com> 
+By: Cam Mendoza (gogi-goji) <mendoza.cam@gmail.com>
 Platform: iPod Mini (138x110, 4 colour grayscale)
 License: CC-BY-SA 3.0
 Version: 1.0
-Last updated: 2012-12-05
+Last updated: 2013-02-26
 
 This theme lives on GitHub!  You can find the project at:
 <https://github.com/gogi-goji/sprocket-rockbox-theme>
