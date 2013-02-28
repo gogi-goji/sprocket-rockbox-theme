@@ -43,7 +43,7 @@
 #
 # Hold Switch
 %?mh<%Vd(hold)|%?mr<%Vd(hold)>>
-%Vl(hold,51,1,8,10,-)%Vf(0)%Vb(3)
+%Vl(hold,55,1,8,10,-)%Vf(0)%Vb(3)
 %xd(b)
 #
 # Playmode Status
@@ -83,4 +83,4 @@
 #
 # The info viewport (Where all the menus and whatnot will be displayed) Setting
 # the label (the first option) to - means it will be used by default
-%Vi(-,0,16,138,94,2)%Vf(0)%Vb(3)
+%Vi(-,0,16,138,94,-)%Vf(0)%Vb(3)
