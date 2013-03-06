@@ -3,7 +3,7 @@
 # Platform: iPod Mini (138x110, 4 colour grayscale)
 # License: CC-BY-SA 3.0
 # Version: 1.0
-# Last updated: 2013-02-27
+# Last updated: 2013-03-06
 # For a README and more information, please see the project page on GitHub:
 # <https://github.com/gogi-goji/sprocket-rockbox-theme> 
 #
@@ -19,7 +19,7 @@
 %xl(a,vol-bar-strip.bmp,0,0,7)
 %xl(b,hold.bmp,0,0)
 %xl(c,play-status.bmp,0,0,7)
-%xl(d,hdd-activity.bmp,0,0)
+#%xl(d,hdd-activity-wide.bmp,0,0)
 %xl(e,batt-strip.bmp,0,0,17)
 %xl(f,batt-charge-strip.bmp,0,0,8)
 %xl(g,separator.bmp,0,0)
@@ -56,7 +56,7 @@
 #
 # Disk Activity
 %?lh<%Vd(hdd)>
-%Vl(hdd,78,3,7,7,-)%Vf(0)%Vb(3)
+%Vl(hdd,78,3,9,7,-)%Vf(0)%Vb(3)
 %xd(d)
 #
 # Battery Percentage Text
@@ -84,3 +84,5 @@
 # The info viewport (Where all the menus and whatnot will be displayed) Setting
 # the label (the first option) to - means it will be used by default
 %Vi(-,0,16,138,94,-)%Vf(0)%Vb(3)
+# Unfortunately, things look too squeezed if we increase the viewport height to have room for six lines
+#%Vi(-,0,12,138,98,-)%Vf(0)%Vb(3)
