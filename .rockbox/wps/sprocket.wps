@@ -3,7 +3,7 @@
 # Platform: iPod Mini (138x110, 4 colour grayscale)
 # License: CC-BY-SA 3.0
 # Version: 1.0
-# Last updated: 2013-03-06
+# Last updated: 2013-03-08
 # For a README and more information, please see the project page on GitHub:
 # <https://github.com/gogi-goji/sprocket-rockbox-theme> 
 #
@@ -24,22 +24,16 @@
 #
 # Playlist position
 %V(2,15,90,14,2)%Vf(0)%Vb(3)
-%al%s%pp %Sx(of) %pe%?pn< in %pn|>
-# Note that %Sx is used for automatic translations if this WPS is being used in
-# another language
+%al%s%pp of %pe%?pn< in %pn|>
 #
 # Repeat / Shuffle / Crossfade indicators
 #
 # In order to keep our icons right aligned here and in the order of crossfade,
 # shuffle, repeat, there's a couple of things going on.  We've already loaded
 # our icons (note that repeat and shuffle have been offset to accommodate the
-# cf icon being bigger).  Next, we make three viewports.  Then, in each
-# viewport we follow a yes/no logic tree to decide which icon to display.
-#
-# The crossfade icon is slightly wider and taller than the shuffle/repeat icons,
-# so if we load everything in the same viewports, the crossfade icon will 
-# flicker when the screen is redrawn due to viewport overlap.  The logic for 
-# which icon to display in each location is done
+# cf icon being bigger), which we'll display in conditionally loaded viewports.
+# A string of conditionals is used to determine which viewports/icons to use, 
+# following the logic outlined in the following tree.
 #
 # Repeat: %?mm<Off|All|One|Shuff|AB>
 # Shuffle: %?ps<On|Off>
