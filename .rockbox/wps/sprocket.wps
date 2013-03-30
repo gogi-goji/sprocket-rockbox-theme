@@ -3,7 +3,7 @@
 # Platform: iPod Mini (138x110, 4 colour grayscale)
 # License: CC-BY-SA 3.0
 # Version: 1.0
-# Last updated: 2013-03-08
+# Last updated: 2013-03-30
 # For a README and more information, please see the project page on GitHub:
 # <https://github.com/gogi-goji/sprocket-rockbox-theme> 
 #
@@ -18,28 +18,27 @@
 %Fl(3,14-Adobe-Helvetica-Bold.fnt)
 %xl(A,repeat-strip.bmp,6,2,4)
 %xl(B,shuffle.bmp,6,2)
-%xl(C,crossfade-12.bmp,0,0)
+%xl(C,crossfade.bmp,0,0)
 %xl(D,prog-bar-full.bmp,0,0)
 %xl(E,prog-bar-empty.bmp,0,0)
 #
 # Playlist position
 %V(2,15,90,14,2)%Vf(0)%Vb(3)
-%al%s%pp of %pe%?pn< in %pn|>
+# no playlist name
+%al%s%pp of %pe
+# including playlist name, if available
+#%al%s%pp of %pe%?pn< in %pn|>
 #
 # Repeat / Shuffle / Crossfade indicators
 #
-# In order to keep our icons right aligned here and in the order of crossfade,
-# shuffle, repeat, there's a couple of things going on.  We've already loaded
-# our icons (note that repeat and shuffle have been offset to accommodate the
-# cf icon being bigger), which we'll display in conditionally loaded viewports.
-# A string of conditionals is used to determine which viewports/icons to use, 
-# following the logic outlined in the following tree.
+# In order to display our icons right aligned and in a consistent order, we do
+# a couple of things.  We've already loaded our icons (note that repeat and 
+# shuffle have been offset to accommodate the CF icon being bigger than them), 
+# which we'll display in conditionally loaded viewports.  A string of 
+# conditionals is used to determine which viewports/icons to use, using the 
+# logic outlined in the following tree.
 #
-# Repeat: %?mm<Off|All|One|Shuff|AB>
-# Shuffle: %?ps<On|Off>
-# Crossfade: %?xf<Off|On in any form>  
-# 
-# Logic for which icon to display (display viewport marked with **name**):
+# Logic tree for which icon to display (display viewport marked with **name**):
 #
 #?repeat < off | on >
 #         +---+ +--+ 
@@ -68,6 +67,10 @@
 #                       +-------+
 #                        **mcf**
 #
+# Repeat: %?mm<Off|All|One|Shuff|AB>
+# Shuffle: %?ps<On|Off>
+# Crossfade: %?xf<Off|On in any form>  
+# 
 %?mm<%?ps<%Vd(rshuffle)%?xf<|%Vd(mcf)>|%?xf<|%Vd(rcf)>>|%Vd(rrepeat)%?ps<%Vd(mshuffle)%?xf<|%Vd(lcf)>|%?xf<|%Vd(mcf)>>>
 #
 # Icon viewports (rightmost|middle|leftmost-repeat|shuffle|cf)
@@ -93,12 +96,24 @@
 # alternating with parent directory name.
 #
 %V(0,27,138,56,3)%Vf(0)%Vb(3)
+#
+# Track name
 %ac%s%?it<%it|%fn>
-%ac%s%?ia<%ia|%?d(2)<%t(6)%ac%s%(Unknown Artist%);%t(6)%ac%s%(%d(2)%)|%(Unknown Artist%)>> 
-%ac%s%?id<%id|%?d(1)<%t(6)%ac%s%(Unknown Album%);%t(6)%ac%s%(%d(1)%)|%(Unknown Album%)>> 
-#%ac%t(1.5)Next:;%ac%s%t(6)%It;%ac%t(1.5)by;%ac%s%t(6)%Ia
-%?Fn<%t(6)%ac%sNext: %?It<%It|%Fn>;%t(1.5)%ac%sNext: by;%t(6)%ac%sNext: %?Ia<%Ia|%(Unknown Artist%)>|%ac- End of Playlist ->
-#%ac%sNext: %It by %Ia #Purely scrolling next track info
+#
+# Artist Name 
+%ac%s%?ia<%ia|%?d(2)<%t(7)%(Unknown Artist%);%t(7)%(%d(2)%)|%(Unknown Artist%)>>
+#
+# Album Name (simple)
+#%ac%s%?id<%id|%?d(1)<%t(6)%(Unknown Album%);%t(6)%(%d(1)%)|%(Unknown Album%)>> 
+# Album Name;(year) [alternating]
+%ac%s%?id<%?iy<%t(7)%id;%t(3.5)%(%iy%)|%id>|%?d(1)<%t(6)%ac%s%(Unknown Album%);%t(6)%ac%s%(%d(1)%)|%(Unknown Album%)>> 
+# Album Name (year) [entirely scrolling]
+#%ac%s%?id<%?iy<%?if(%iy,!=,0)<%id %(%iy%)|%id>|%id>|%?d(1)<%t(6)%(Unknown Album%);%t(6)%(%d(1)%)|%(Unknown Album%)>>
+#
+# Next track info [alternating between lines]
+%ac%s%?Fn<%?It<%t(6.5)Next: %It;%t(1.5)Next: by;%t(6)Next: %?Ia<%Ia|%(Unknown Artist%)>|Next: %Fn>|- End of Playlist ->
+# Next track info [scrolling]
+#%ac%s%?Fn<%?It<Next: %It by %?Ia<%Ia|%(Unknown Artist%)>|%Fn>|- End of Playlist ->
 #
 # Progress Bar
 # D = full, E = Empty

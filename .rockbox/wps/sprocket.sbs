@@ -3,7 +3,7 @@
 # Platform: iPod Mini (138x110, 4 colour grayscale)
 # License: CC-BY-SA 3.0
 # Version: 1.0
-# Last updated: 2013-03-06
+# Last updated: 2013-03-30
 # For a README and more information, please see the project page on GitHub:
 # <https://github.com/gogi-goji/sprocket-rockbox-theme> 
 #
@@ -36,7 +36,7 @@
 #Syntax:<Mute|...|0dB|Above 0dB>
 %?pv<%xd(aa)|%xd(aa)|%xd(aa)|%xd(ab)|%xd(ac)|%xd(ad)|%xd(ae)|%xd(af)|%xd(af)|%xd(ag)>
 # Some repeats in here to help better map bar to perceived volume change 
-# (Note: still needs improvement)
+# (TODO: still needs improvement)
 #
 # Volume text
 %V(13,0,38,10,2)%Vf(0)%Vb(3)
@@ -64,7 +64,8 @@
 %V(88,0,25,10,2)%Vf(0)%Vb(3)
 %ar%bl%%
 #
-# Battery Bar Check if battery is connected to power and charing, and display
+# Battery Bar 
+# Check if battery is connected to power and charing, and display
 # the correct viewport accordingly
 %?bp<%?bc<%Vd(charging)|%Vd(charged)>|%Vd(discharging)>
 # The Viewports
@@ -82,8 +83,8 @@
 %V(0,13,138,1,-)%Vf(0)%Vb(3)
 %xd(g)
 #
-# The info viewport (Where all the menus and whatnot will be displayed) Setting
-# the label (the first option) to - means it will be used by default
+# The info viewport (Where all the menus and whatnot will be displayed) 
+# Setting the label (the first option) to - means it will be used by default
 %Vi(-,0,16,138,94,-)%Vf(0)%Vb(3)
 # Unfortunately, things look too squeezed if we increase the viewport height to have room for six lines
 #%Vi(-,0,12,138,98,-)%Vf(0)%Vb(3)
