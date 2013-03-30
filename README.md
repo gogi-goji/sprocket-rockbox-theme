@@ -31,28 +31,29 @@ Customising
 
 There's some different options you can use to tweak the displayed information
 that are floating around in the different config files.  Comment or uncomment
-things (lines beginning with a # are not executed) as you like to tweak things.
+things (lines beginning with a `#` are not executed) as you like to tweak
+things.
 
 Easy things you can try:
 
 *   Whether the album date is displayed alternating with the album name, after
     the album name, or not displayed at all
     *   .rockbox/wps/sprocket.wps
-    *   See different options around $# Album Name$
+    *   See different options around `# Album Name`
 *   Next track info, alternating or scrolling
     *   .rockbox/wps/sprocket.wps
-    *   See around $# Next track info$
+    *   See around `# Next track info`
 *   If volume/battery levels are displayed as simple icons or with text too
     *(TODO: Enhance volume icon when not using text too to show more levels)*
     *   .rockbox/wps/sprocket.sbs
-    *   Comment out the two lines after $# Volume text$ and 
-        $# Battery Percentage Text$
+    *   Comment out the two lines after `# Volume text` and 
+        `# Battery Percentage Text`
 *   Whether or not to display a sleep timer if it's set
     *   .rockbox/wps/sprocket.wps
-    *   Two lines following $# Sleep timer$
+    *   Two lines following `# Sleep timer`
 *   Whether or not to show the playlist name
     *   .rockbox/wps/sprocket.wps
-    *   See $# Playlist position$
+    *   See `# Playlist position`
 
 At some point in the future, hopefully I'll make a script you can run to make
 it easier to customise this theme, choosing between different options and
